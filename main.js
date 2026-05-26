@@ -54,31 +54,31 @@ controls.minPolarAngle   = Math.PI * 0.25;
 controls.maxPolarAngle   = Math.PI * 0.75;
 
 // ── 조명 ─────────────────────────────────────────
-// 밝은 키 라이트 (상단 앞 → 이미지의 밝은 하이라이트)
-const keyLight = new THREE.DirectionalLight(0xFFFFFF, 3.5);
+// 밝은 키 라이트 — 하이라이트 스타 버스트
+const keyLight = new THREE.DirectionalLight(0xFFFFFF, 4.0);
 keyLight.position.set(2, 6, 4);
 scene.add(keyLight);
 
-// 사이드 림 라이트 (파란빛 반사)
-const rimLight = new THREE.DirectionalLight(0x4477DD, 2.4);
+// 사이드 림 라이트 — 블루-퍼플 반사
+const rimLight = new THREE.DirectionalLight(0x5566CC, 2.8);
 rimLight.position.set(-5, 2, -2);
 scene.add(rimLight);
 
-// 하단 필 라이트
-const fillLight = new THREE.DirectionalLight(0xAABBCC, 0.8);
+// 하단 필 라이트 — 쿨 블루 바운스
+const fillLight = new THREE.DirectionalLight(0x8899CC, 1.0);
 fillLight.position.set(0, -4, 3);
 scene.add(fillLight);
 
-// Ambient (약하게 – 그림자 살리기)
-scene.add(new THREE.AmbientLight(0xCCDDFF, 0.4));
+// Ambient — 쿨 퍼플-블루 틴트
+scene.add(new THREE.AmbientLight(0xAABBEE, 0.5));
 
 // ── 메탈릭 재질 – 실버 크롬 (쿨 블루-그레이) ─────
 // 레퍼: 밝은 크롬/스테인리스 + 쿨 블루 반사
 const metalMat = new THREE.MeshStandardMaterial({
-  color:           new THREE.Color(0x5C7AAE), // 다크 블루-실버
+  color:           new THREE.Color(0x6878C0), // 퍼리윙클 블루-메탈
   metalness:       1.0,
-  roughness:       0.08,
-  envMapIntensity: 2.4,
+  roughness:       0.05,   // 더 매끈한 크롬
+  envMapIntensity: 3.0,
 });
 
 // ── 로딩 UI ──────────────────────────────────────
