@@ -75,7 +75,7 @@ scene.add(new THREE.AmbientLight(0xCCDDFF, 0.4));
 // ── 메탈릭 재질 – 실버 크롬 (쿨 블루-그레이) ─────
 // 레퍼: 밝은 크롬/스테인리스 + 쿨 블루 반사
 const metalMat = new THREE.MeshStandardMaterial({
-  color:           new THREE.Color(0x7A9BC8), // 쿨 블루-실버
+  color:           new THREE.Color(0x5C7AAE), // 다크 블루-실버
   metalness:       1.0,
   roughness:       0.08,
   envMapIntensity: 2.4,
