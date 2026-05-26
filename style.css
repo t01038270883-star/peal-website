@@ -51,13 +51,13 @@ body {
   border: 1px solid var(--black);
 }
 
-/* ── NAV (Kartell 스타일 — 하단 검정 한 줄 + 두 줄 메뉴) ── */
+/* ── NAV — 로고 왼쪽, 메뉴+V.1 오른쪽, 한 줄 ── */
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
   display: flex; align-items: stretch; justify-content: space-between;
   padding: 0 48px;
-  height: 62px;
+  height: 54px;
   background: #fff;
   border-bottom: 1.5px solid #000;
 }
@@ -66,6 +66,12 @@ body {
   width: auto;
   display: block;
   align-self: center;
+}
+/* 오른쪽 그룹: 메뉴 + V.1 */
+.nav-right-group {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
 }
 .nav-links {
   display: flex; gap: 0;
@@ -80,44 +86,29 @@ body {
 .nav-links li + li {
   border-left: 1.5px solid #000;
 }
-/* 두 줄 메뉴 링크 */
 .nav-links a {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2px;
+  display: flex; align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   text-decoration: none;
+  color: #000;
   padding: 0 24px;
   height: 100%;
   transition: color 0.2s;
+  white-space: nowrap;
 }
-.nav-main {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #000;
-  line-height: 1;
-  transition: color 0.2s;
-}
-.nav-sub {
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #888;
-  line-height: 1;
-  transition: color 0.2s;
-}
-.nav-links a:hover .nav-main { color: #2785EA; }
-.nav-links a:hover .nav-sub  { color: #2785EA; }
+.nav-links a:hover { color: #2785EA; }
 .nav-right {
+  display: flex; align-items: center;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.18em;
   color: #000;
   text-transform: uppercase;
-  align-self: center;
+  padding-left: 24px;
+  border-left: 1.5px solid #000;
 }
 
 /* ── HERO (Kartell 스타일) ────────────────────── */
@@ -141,7 +132,7 @@ body {
 /* 상단 레이블 — nav 바로 아래 */
 .hero-label.top-label {
   position: absolute;
-  top: 62px; left: 0; right: 0;
+  top: 54px; left: 0; right: 0;
   display: flex; justify-content: space-between;
   align-items: center;
   padding: 9px 48px;
@@ -158,17 +149,17 @@ body {
   color: #000;
 }
 
-/* 하단 좌측 대형 로고 이미지 */
+/* 하단 좌측 대형 로고 — 5% 투명도로 3D 뒤에 배치 */
 .hero-brand-logo {
   position: absolute;
   bottom: 42px;
-  left: 40px;
-  height: clamp(80px, 16vw, 200px);
+  left: 32px;
+  height: clamp(100px, 18vw, 220px);
   width: auto;
   pointer-events: none;
-  z-index: 0;
+  z-index: 0;          /* 캔버스(z-index:1) 뒤 */
   user-select: none;
-  opacity: 0.92;
+  opacity: 0.05;
 }
 
 /* 우측 제품 정보 */
