@@ -129,37 +129,19 @@ body {
   z-index: 1;
 }
 
-/* 상단 레이블 — nav 바로 아래 */
-.hero-label.top-label {
-  position: absolute;
-  top: 54px; left: 0; right: 0;
-  display: flex; justify-content: space-between;
-  align-items: center;
-  padding: 9px 48px;
-  z-index: 3;
-  pointer-events: none;
-  border-bottom: 1.5px solid #000;
-  background: #fff;
-}
-.hero-label span {
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #000;
-}
 
-/* 하단 좌측 대형 로고 — 5% 투명도로 3D 뒤에 배치 */
+/* 중앙 3D 오브제 뒤 배경 로고 — opacity 3% */
 .hero-brand-logo {
   position: absolute;
-  bottom: 42px;
-  left: 32px;
-  height: clamp(100px, 18vw, 220px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: clamp(120px, 22vw, 280px);
   width: auto;
   pointer-events: none;
   z-index: 0;          /* 캔버스(z-index:1) 뒤 */
   user-select: none;
-  opacity: 0.05;
+  opacity: 0.03;
 }
 
 /* 우측 제품 정보 */
