@@ -30,13 +30,13 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping         = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.2;
 renderer.outputColorSpace    = THREE.SRGBColorSpace;
-renderer.setClearColor(0x000000, 0);
+renderer.setClearColor(0xF5F4F0, 0); // 투명 – CSS 배경 사용
 
 const scene  = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.set(0, 0, 5);
 
-// ── RoomEnvironment (HDR 없이 메탈릭 완성) ───────
+// ── RoomEnvironment ───────────────────────────────
 const pmrem  = new THREE.PMREMGenerator(renderer);
 const envTex = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 scene.environment = envTex;
@@ -53,23 +53,32 @@ controls.autoRotateSpeed = 0.6;
 controls.minPolarAngle   = Math.PI * 0.25;
 controls.maxPolarAngle   = Math.PI * 0.75;
 
-// ── 보조 조명 (RoomEnvironment + 추가 라이트) ─────
-scene.add(new THREE.AmbientLight(0xffffff, 0.3));
-
-const keyLight = new THREE.DirectionalLight(0xE8EEFF, 2.0);
-keyLight.position.set(3, 5, 4);
+// ── 조명 ─────────────────────────────────────────
+// 밝은 키 라이트 (상단 앞 → 이미지의 밝은 하이라이트)
+const keyLight = new THREE.DirectionalLight(0xFFFFFF, 3.5);
+keyLight.position.set(2, 6, 4);
 scene.add(keyLight);
 
-const rimLight = new THREE.DirectionalLight(0x9BAEFF, 1.2);
-rimLight.position.set(-4, 1, -3);
+// 사이드 림 라이트 (파란빛 반사)
+const rimLight = new THREE.DirectionalLight(0x6699CC, 1.8);
+rimLight.position.set(-5, 2, -2);
 scene.add(rimLight);
 
-// ── 메탈릭 재질 (MeshStandardMaterial) ───────────
+// 하단 필 라이트
+const fillLight = new THREE.DirectionalLight(0xAABBCC, 0.8);
+fillLight.position.set(0, -4, 3);
+scene.add(fillLight);
+
+// Ambient (약하게 – 그림자 살리기)
+scene.add(new THREE.AmbientLight(0xCCDDFF, 0.4));
+
+// ── 메탈릭 재질 – 다크 건메탈 블루 ──────────────
+// 레퍼 이미지: 짙은 네이비/건메탈 + 강한 크롬 반사
 const metalMat = new THREE.MeshStandardMaterial({
-  color:            new THREE.Color(0xC5CAD5), // 스틸 실버
-  metalness:        0.95,
-  roughness:        0.12,
-  envMapIntensity:  1.6,
+  color:           new THREE.Color(0x1C2840), // 다크 건메탈 블루
+  metalness:       1.0,
+  roughness:       0.04,                       // 매우 낮음 → 크롬 느낌
+  envMapIntensity: 3.0,
 });
 
 // ── 로딩 UI ──────────────────────────────────────
