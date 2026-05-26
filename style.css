@@ -51,17 +51,16 @@ body {
   border: 1px solid var(--black);
 }
 
-/* ── NAV (Kartell 스타일) ────────────────────── */
+/* ── NAV (Kartell 스타일 — 선명한 검정 두줄) ── */
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 48px;
-  height: 56px;
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1.5px solid rgba(0,0,0,0.18);
+  height: 54px;
+  background: #fff;
+  border-top: 1.5px solid #000;
+  border-bottom: 1.5px solid #000;
 }
 .nav-logo {
   height: 20px;
@@ -79,24 +78,24 @@ body {
   display: flex; align-items: center;
 }
 .nav-links li + li {
-  border-left: 1px solid rgba(0,0,0,0.1);
+  border-left: 1.5px solid #000;
 }
 .nav-links a {
   font-size: 10.5px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--black);
+  color: #000;
   padding: 0 22px;
   transition: color 0.2s;
 }
 .nav-links a:hover { color: #2785EA; }
 .nav-right {
   font-size: 10px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.18em;
-  color: rgba(0,0,0,0.3);
+  color: #000;
   text-transform: uppercase;
 }
 
@@ -118,40 +117,37 @@ body {
   z-index: 1;
 }
 
-/* 상단 레이블 — nav 바로 아래 얇은 선 구분 */
+/* 상단 레이블 — nav 아래 두 번째 선 (Kartell 두줄 효과) */
 .hero-label.top-label {
   position: absolute;
-  top: 56px; left: 0; right: 0;
+  top: 54px; left: 0; right: 0;
   display: flex; justify-content: space-between;
   align-items: center;
-  padding: 10px 48px;
+  padding: 9px 48px;
   z-index: 3;
   pointer-events: none;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1.5px solid #000;
+  background: #fff;
 }
 .hero-label span {
   font-size: 9.5px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.4);
+  color: #000;
 }
 
-/* 하단 대형 브랜드 텍스트 (Kartell 스타일 — bottom-left) */
-.hero-brand-text {
+/* 하단 좌측 대형 로고 이미지 */
+.hero-brand-logo {
   position: absolute;
-  bottom: 36px;           /* 블루 바 높이만큼 */
-  left: -6px;
-  font-size: clamp(96px, 20vw, 260px);
-  font-weight: 700;
-  letter-spacing: -0.055em;
-  color: var(--black);
-  opacity: 1;
-  white-space: nowrap;
+  bottom: 42px;
+  left: 40px;
+  height: clamp(80px, 16vw, 200px);
+  width: auto;
   pointer-events: none;
   z-index: 0;
   user-select: none;
-  line-height: 0.88;
+  opacity: 0.92;
 }
 
 /* 우측 제품 정보 */
@@ -168,15 +164,16 @@ body {
 }
 .product-name {
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--black);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #000;
 }
 .product-sub {
   font-size: 10px;
-  font-weight: 300;
-  letter-spacing: 0.06em;
-  color: var(--mid);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #000;
 }
 
 /* 드래그 힌트 */
@@ -192,16 +189,16 @@ body {
 }
 .drag-circle {
   width: 40px; height: 40px;
-  border: 1px solid rgba(0,0,0,0.18);
+  border: 1.5px solid #000;
   border-radius: 50%;
   animation: pulse-ring 2.5s ease-in-out infinite;
 }
 .drag-hint span:last-child {
   font-size: 9px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.35);
+  color: #000;
 }
 @keyframes pulse-ring {
   0%, 100% { transform: scale(1);    opacity: 0.5; }
