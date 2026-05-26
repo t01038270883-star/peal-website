@@ -8,7 +8,7 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg:       #F5F4F0;
+  --bg:       #FFFFFF;
   --white:    #FFFFFF;
   --black:    #0D0D12;
   --mid:      #6B7280;
@@ -57,7 +57,7 @@ body {
   z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 24px 48px;
-  background: rgba(245,244,240,0.85);
+  background: rgba(255,255,255,0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);

@@ -72,13 +72,13 @@ scene.add(fillLight);
 // Ambient (약하게 – 그림자 살리기)
 scene.add(new THREE.AmbientLight(0xCCDDFF, 0.4));
 
-// ── 메탈릭 재질 – 다크 건메탈 블루 ──────────────
-// 레퍼 이미지: 짙은 네이비/건메탈 + 강한 크롬 반사
+// ── 메탈릭 재질 – 실버 크롬 (쿨 블루-그레이) ─────
+// 레퍼: 밝은 크롬/스테인리스 + 쿨 블루 반사
 const metalMat = new THREE.MeshStandardMaterial({
-  color:           new THREE.Color(0x1C2840), // 다크 건메탈 블루
+  color:           new THREE.Color(0xA8B8CC), // 밝은 쿨 실버
   metalness:       1.0,
-  roughness:       0.04,                       // 매우 낮음 → 크롬 느낌
-  envMapIntensity: 3.0,
+  roughness:       0.08,
+  envMapIntensity: 2.2,
 });
 
 // ── 로딩 UI ──────────────────────────────────────
