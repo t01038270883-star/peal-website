@@ -322,8 +322,9 @@ body {
 
 /* ── PORTFOLIO 3D CUBE ────────────────────────── */
 .portfolio {
-  padding: 80px 0 140px;
+  padding: 80px 0 180px;
   background: var(--bg);
+  overflow: visible;
 }
 .portfolio-header {
   padding: 0 48px;
@@ -336,158 +337,126 @@ body {
   color: var(--black);
 }
 
-/* 씬 전체 */
-.cube-scene {
-  position: relative;
+/* ── ROLL CUBE STAGE ──────────────────────────── */
+.cube-stage {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 48px;
-  padding: 0 48px;
+  gap: 36px;
+  padding: 0 32px;
 }
 
-/* 좌우 버튼 */
-.cube-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 20;
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--white);
-  color: var(--black);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.25s, border-color 0.25s, transform 0.25s;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-}
-.cube-nav:hover { background: var(--black); color: var(--white); border-color: var(--black); }
-.cube-prev { left: 8px; }
-.cube-next { right: 8px; }
-
-/* 3D 래퍼 */
-.cube-wrapper {
-  width: 400px;
-  height: 640px;
-  perspective: 1400px;
-  perspective-origin: 50% 50%;
+/* 원근감 컨테이너 */
+.cube-viewport {
+  perspective: 1100px;
+  perspective-origin: 50% 35%;
+  overflow: visible;
+  /* 반응형 너비 */
+  width: min(680px, calc(100vw - 64px));
 }
 
-/* 큐브 */
-.cube {
-  width: 400px;
-  height: 640px;
+/* 큐브 본체 — 반응형 스케일 */
+.roll-cube {
+  --cw: min(680px, calc(100vw - 64px));
+  --ch: calc(var(--cw) * 0.618);
+  --cr: calc(var(--ch) / 2);       /* translateZ 반지름 */
+  width: var(--cw);
+  height: var(--ch);
   position: relative;
   transform-style: preserve-3d;
-  transform: rotateY(0deg);
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: rotateX(-12deg);
+  transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
-/* 각 면 */
-.cube-face {
+/* 각 face 공통 */
+.roll-face {
   position: absolute;
-  width: 400px;
-  height: 640px;
+  width: 100%; height: 100%;
+  overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(0,0,0,0.06),
-    0 32px 80px rgba(0,0,0,0.14),
-    0 8px 24px rgba(0,0,0,0.08);
 }
 
-/* 큐브 면 위치 (정사각형 단면 400px) */
-.face-1 { transform: rotateY(  0deg) translateZ(200px); }
-.face-2 { transform: rotateY( 90deg) translateZ(200px); }
-.face-3 { transform: rotateY(180deg) translateZ(200px); }
-.face-4 { transform: rotateY(270deg) translateZ(200px); }
+/* face 위치 — X축 회전, translateZ = 높이/2 */
+.rf-0 { transform: rotateX(  0deg) translateZ(var(--cr)); }
+.rf-1 { transform: rotateX( 90deg) translateZ(var(--cr)); }
+.rf-2 { transform: rotateX(180deg) translateZ(var(--cr)); }
+.rf-3 { transform: rotateX(270deg) translateZ(var(--cr)); }
 
-/* ── 롤카드 내부 레이아웃 (Image 2 구조) ─────── */
-.role-card {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background: #C8D4E8; /* PEAL 스틸 블루 */
-  font-family: var(--font-sans);
-  overflow: hidden;
-}
-
-/* 상단: 큰 직함 */
-.role-top {
-  padding: 24px 24px 16px;
-  background: #C8D4E8;
-}
-.role-title {
-  font-size: clamp(36px, 8vw, 52px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 0.95;
-  color: var(--black);
-  text-transform: uppercase;
-}
-
-/* 중단: 2컬럼 정보 */
-.role-mid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 16px 24px;
-  background: #C8D4E8;
-  flex-shrink: 0;
-}
-.role-left {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.role-left p {
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--black);
-}
-.role-contact-btn {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--white);
-  background: var(--black);
-  padding: 8px 18px;
-  border-radius: 20px;
-  width: fit-content;
-  transition: background 0.25s;
-}
-.role-contact-btn:hover { background: var(--blue); }
-
-.role-right p {
-  font-size: 11px;
-  font-weight: 300;
-  line-height: 1.7;
-  color: var(--black);
-  opacity: 0.75;
-}
-
-/* 하단: 사진 (나머지 공간 전부) */
-.role-photo {
-  flex: 1;
-  overflow: hidden;
-  min-height: 0;
-}
-.role-photo img {
+/* 전체 배경 이미지 */
+.face-bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center top;
   display: block;
 }
+
+/* 어두운 그라디언트 오버레이 */
+.face-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.0) 30%,
+    rgba(0,0,0,0.72) 100%
+  );
+}
+
+/* 텍스트 콘텐츠 */
+.face-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 36px;
+  gap: 10px;
+}
+
+/* 직함 */
+.face-role {
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* 서브 정보 */
+.face-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.face-info span {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.65);
+}
+.face-info span:first-child {
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+}
+
+/* 상/하 캡 (박스 두께 표현) */
+.roll-cap {
+  position: absolute;
+  background: #0d0d10;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+}
+.cap-top    { transform: rotateX( 90deg) translateZ(calc(var(--cr) * -1)); }
+.cap-bottom { transform: rotateX(-90deg) translateZ(var(--cr)); }
+.cap-left   { transform: rotateY(-90deg) translateZ(0) translateX(calc(var(--cr) * -1)); width: var(--ch); }
+.cap-right  { transform: rotateY( 90deg) translateZ(0) translateX(calc(var(--cw) - var(--cr))); width: var(--ch); }
 
 /* 페이지 인디케이터 */
 .cube-dots {
@@ -496,7 +465,7 @@ body {
   align-items: center;
 }
 .cube-dot {
-  width: 6px; height: 6px;
+  width: 5px; height: 5px;
   border-radius: 50%;
   background: var(--light);
   cursor: pointer;
@@ -504,7 +473,7 @@ body {
 }
 .cube-dot.active {
   background: var(--black);
-  transform: scale(1.3);
+  transform: scale(1.4);
 }
 
 /* ── DEVICE STORY ─────────────────────────────── */

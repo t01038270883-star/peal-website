@@ -177,52 +177,52 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// ── 3. 3D CUBE ROTATION ──────────────────────────
-(function initCube() {
-  const cube    = document.getElementById('role-cube');
-  const prevBtn = document.getElementById('cube-prev');
-  const nextBtn = document.getElementById('cube-next');
-  const dots    = document.querySelectorAll('.cube-dot');
+// ── 3. AUTO-ROLL CUBE (X축 위로 굴리기) ──────────
+(function initRollCube() {
+  const cube = document.getElementById('roll-cube');
+  const dots = document.querySelectorAll('.cube-dot');
   if (!cube) return;
 
-  const FACES = 4;
-  let current = 0;
-  let isDragging = false;
-  let dragStartX = 0;
+  const FACES   = 4;
+  const TILT    = -12;   // 기본 기울기 (deg)
+  let faceIdx   = 0;     // 누적 스텝 (음수 rotateX)
+  let paused    = false;
 
-  function rotateTo(idx) {
-    current = ((idx % FACES) + FACES) % FACES;
-    cube.style.transform = `rotateY(${-current * 90}deg)`;
+  function rollTo(step) {
+    faceIdx = step;
+    const current = ((step % FACES) + FACES) % FACES;
+    cube.style.transform = `rotateX(${TILT + (-step * 90)}deg)`;
     dots.forEach((d, i) => d.classList.toggle('active', i === current));
   }
 
-  // 버튼
-  prevBtn?.addEventListener('click', () => rotateTo(current - 1));
-  nextBtn?.addEventListener('click', () => rotateTo(current + 1));
+  // 자동 롤
+  const timer = setInterval(() => {
+    if (!paused) rollTo(faceIdx + 1);
+  }, 4000);
 
-  // 점 클릭
-  dots.forEach(d => d.addEventListener('click', () => rotateTo(+d.dataset.index)));
-
-  // 드래그 (마우스)
-  cube.addEventListener('mousedown', e => { isDragging = true; dragStartX = e.clientX; });
-  window.addEventListener('mouseup',  e => {
-    if (!isDragging) return;
-    isDragging = false;
-    const dx = e.clientX - dragStartX;
-    if (Math.abs(dx) > 60) rotateTo(dx < 0 ? current + 1 : current - 1);
+  // 점 클릭으로 수동 이동
+  dots.forEach((d, i) => {
+    d.addEventListener('click', () => {
+      // 현재 faceIdx에서 목적지 방향으로 가장 가까운 step 계산
+      const cur = ((faceIdx % FACES) + FACES) % FACES;
+      let diff = i - cur;
+      if (diff < 0) diff += FACES;
+      rollTo(faceIdx + diff);
+    });
   });
 
-  // 스와이프 (터치)
-  cube.addEventListener('touchstart', e => { dragStartX = e.touches[0].clientX; }, { passive: true });
-  cube.addEventListener('touchend',   e => {
-    const dx = e.changedTouches[0].clientX - dragStartX;
-    if (Math.abs(dx) > 50) rotateTo(dx < 0 ? current + 1 : current - 1);
-  });
+  // hover시 일시정지
+  cube.addEventListener('mouseenter', () => { paused = true; });
+  cube.addEventListener('mouseleave', () => { paused = false; });
 
-  // 키보드
-  window.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') rotateTo(current + 1);
-    if (e.key === 'ArrowLeft')  rotateTo(current - 1);
+  // 터치 스와이프
+  let touchStartY = 0;
+  cube.addEventListener('touchstart', e => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  cube.addEventListener('touchend', e => {
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dy) > 50) rollTo(dy < 0 ? faceIdx + 1 : faceIdx - 1);
   });
 })();
 

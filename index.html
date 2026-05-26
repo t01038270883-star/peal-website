@@ -80,126 +80,88 @@
     </div>
   </section>
 
-  <!-- ── PORTFOLIO 3D CUBE ─────────────────────────── -->
+  <!-- ── PORTFOLIO 3D ROLLING CUBE ─────────────────── -->
   <section class="portfolio" id="portfolio">
     <div class="portfolio-header">
       <span class="section-tag">02 — PORTFOLIO</span>
       <h2>Select Your Role</h2>
     </div>
 
-    <div class="cube-scene">
-      <!-- 좌우 네비게이션 -->
-      <button class="cube-nav cube-prev" aria-label="Previous" id="cube-prev">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </button>
-      <button class="cube-nav cube-next" aria-label="Next" id="cube-next">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </button>
+    <div class="cube-stage">
+      <div class="cube-viewport">
+        <div class="roll-cube" id="roll-cube">
 
-      <!-- 큐브 컨테이너 -->
-      <div class="cube-wrapper">
-        <div class="cube" id="role-cube">
-
-          <!-- Face 1: Graphic Designer -->
-          <div class="cube-face face-1">
-            <div class="role-card">
-              <div class="role-top">
-                <h2 class="role-title">GRAPHIC<br>DESIGNER</h2>
-              </div>
-              <div class="role-mid">
-                <div class="role-left">
-                  <p>Jinhee Eo<br>Brand Experience<br>Designer<br>Selected Works<br>2025–2026<br>Daegu, Korea</p>
-                  <a href="#connect" class="role-contact-btn">CONTACT</a>
-                </div>
-                <div class="role-right">
-                  <p>Jinhee Eo is a brand experience designer working across visual identity, packaging, character design, and product storytelling. This profile presents selected works from 2025 to 2026, focusing on memorable brand moments built through clear concepts and refined visual systems.</p>
-                </div>
-              </div>
-              <div class="role-photo">
-                <img src="public/images/model.png" alt="Jinhee Eo" />
+          <!-- ── 4 content faces (X축 회전) ── -->
+          <div class="roll-face rf-0">
+            <img src="public/images/model.png" alt="" class="face-bg">
+            <div class="face-overlay"></div>
+            <div class="face-content">
+              <div class="face-role">GRAPHIC<br>DESIGNER</div>
+              <div class="face-info">
+                <span>Jinhee Eo</span>
+                <span>Visual Identity · Brand System · Typography</span>
+                <span>2025 – 2026, Daegu Korea</span>
               </div>
             </div>
           </div>
 
-          <!-- Face 2: Brand Experience -->
-          <div class="cube-face face-2">
-            <div class="role-card">
-              <div class="role-top">
-                <h2 class="role-title">BRAND<br>EXPERIENCE</h2>
-              </div>
-              <div class="role-mid">
-                <div class="role-left">
-                  <p>Jinhee Eo<br>Brand Experience<br>Designer<br>Selected Works<br>2025–2026<br>Daegu, Korea</p>
-                  <a href="#connect" class="role-contact-btn">CONTACT</a>
-                </div>
-                <div class="role-right">
-                  <p>Specializing in packaging design, product storytelling, and campaign direction. Building brand worlds that translate concept into sensory experience — from object to touchpoint, from identity to emotion.</p>
-                </div>
-              </div>
-              <div class="role-photo">
-                <img src="public/images/model.png" alt="Jinhee Eo" />
+          <div class="roll-face rf-1">
+            <img src="public/images/model.png" alt="" class="face-bg">
+            <div class="face-overlay"></div>
+            <div class="face-content">
+              <div class="face-role">BRAND<br>EXPERIENCE</div>
+              <div class="face-info">
+                <span>Jinhee Eo</span>
+                <span>Packaging · Storytelling · Campaign</span>
+                <span>2025 – 2026, Daegu Korea</span>
               </div>
             </div>
           </div>
 
-          <!-- Face 3: Character Design -->
-          <div class="cube-face face-3">
-            <div class="role-card">
-              <div class="role-top">
-                <h2 class="role-title">CHARACTER<br>DESIGNER</h2>
-              </div>
-              <div class="role-mid">
-                <div class="role-left">
-                  <p>Jinhee Eo<br>Brand Experience<br>Designer<br>Selected Works<br>2025–2026<br>Daegu, Korea</p>
-                  <a href="#connect" class="role-contact-btn">CONTACT</a>
-                </div>
-                <div class="role-right">
-                  <p>Creating IP-driven characters and illustrated worlds with narrative depth. Work spans from concept development and personality building to full visual systems — where identity becomes character.</p>
-                </div>
-              </div>
-              <div class="role-photo">
-                <img src="public/images/model.png" alt="Jinhee Eo" />
+          <div class="roll-face rf-2">
+            <img src="public/images/model.png" alt="" class="face-bg">
+            <div class="face-overlay"></div>
+            <div class="face-content">
+              <div class="face-role">CHARACTER<br>DESIGNER</div>
+              <div class="face-info">
+                <span>Jinhee Eo</span>
+                <span>IP · Illustration · World-building</span>
+                <span>2025 – 2026, Daegu Korea</span>
               </div>
             </div>
           </div>
 
-          <!-- Face 4: Art Direction -->
-          <div class="cube-face face-4">
-            <div class="role-card">
-              <div class="role-top">
-                <h2 class="role-title">ART<br>DIRECTOR</h2>
-              </div>
-              <div class="role-mid">
-                <div class="role-left">
-                  <p>Jinhee Eo<br>Brand Experience<br>Designer<br>Selected Works<br>2025–2026<br>Daegu, Korea</p>
-                  <a href="#connect" class="role-contact-btn">CONTACT</a>
-                </div>
-                <div class="role-right">
-                  <p>Directing photography, editorial layouts, and visual language across digital and print. Translating brand essence into compelling image-making — with a focus on atmosphere, styling, and composed detail.</p>
-                </div>
-              </div>
-              <div class="role-photo">
-                <img src="public/images/model.png" alt="Jinhee Eo" />
+          <div class="roll-face rf-3">
+            <img src="public/images/model.png" alt="" class="face-bg">
+            <div class="face-overlay"></div>
+            <div class="face-content">
+              <div class="face-role">ART<br>DIRECTOR</div>
+              <div class="face-info">
+                <span>Jinhee Eo</span>
+                <span>Photography · Editorial · Visual Language</span>
+                <span>2025 – 2026, Daegu Korea</span>
               </div>
             </div>
           </div>
 
-        </div><!-- /cube -->
-      </div><!-- /cube-wrapper -->
+          <!-- ── 상/하단 캡 (박스 두께 표현) ── -->
+          <div class="roll-cap cap-top"></div>
+          <div class="roll-cap cap-bottom"></div>
+          <!-- ── 좌/우 캡 ── -->
+          <div class="roll-cap cap-left"></div>
+          <div class="roll-cap cap-right"></div>
 
-      <!-- 페이지 인디케이터 -->
-      <div class="cube-dots">
-        <span class="cube-dot active" data-index="0"></span>
-        <span class="cube-dot" data-index="1"></span>
-        <span class="cube-dot" data-index="2"></span>
-        <span class="cube-dot" data-index="3"></span>
+        </div><!-- /roll-cube -->
+      </div><!-- /cube-viewport -->
+
+      <!-- 인디케이터 -->
+      <div class="cube-dots" id="cube-dots">
+        <span class="cube-dot active"></span>
+        <span class="cube-dot"></span>
+        <span class="cube-dot"></span>
+        <span class="cube-dot"></span>
       </div>
-
-    </div><!-- /cube-scene -->
+    </div><!-- /cube-stage -->
   </section>
 
   <!-- ── DEVICE STORY ──────────────────────────────── -->
