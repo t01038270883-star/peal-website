@@ -51,18 +51,18 @@ body {
   border: 1px solid var(--black);
 }
 
-/* ── NAV — 로고 왼쪽, 메뉴+V.1 오른쪽, 한 줄 ── */
+/* ── NAV — 좌우 타이트, Kartell 스타일 ── */
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
   display: flex; align-items: stretch; justify-content: space-between;
-  padding: 0 48px;
-  height: 54px;
+  padding: 0 20px;
+  height: 44px;
   background: #fff;
   border-bottom: 1.5px solid #000;
 }
 .nav-logo {
-  height: 20px;
+  height: 17px;
   width: auto;
   display: block;
   align-self: center;
@@ -88,13 +88,13 @@ body {
 }
 .nav-links a {
   display: flex; align-items: center;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   text-decoration: none;
   color: #000;
-  padding: 0 24px;
+  padding: 0 16px;
   height: 100%;
   transition: color 0.2s;
   white-space: nowrap;
@@ -104,10 +104,10 @@ body {
   display: flex; align-items: center;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   color: #000;
   text-transform: uppercase;
-  padding-left: 24px;
+  padding-left: 16px;
   border-left: 1.5px solid #000;
 }
 
@@ -147,7 +147,7 @@ body {
 /* 우측 제품 정보 */
 .hero-product-info {
   position: absolute;
-  right: 48px;
+  right: 20px;
   bottom: 90px;
   z-index: 2;
   display: flex;
@@ -208,7 +208,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 48px;
+  padding: 0 20px;
   z-index: 4;
   pointer-events: none;
 }
@@ -599,7 +599,7 @@ body {
 
 /* ── RESPONSIVE ───────────────────────────────── */
 @media (max-width: 768px) {
-  .nav { padding: 0 20px; height: 50px; }
+  .nav { padding: 0 14px; height: 42px; }
   .nav-links { display: none; }
   .hero-label.top-label { padding: 10px 20px; }
   .hero-product-info { right: 20px; bottom: 70px; }
