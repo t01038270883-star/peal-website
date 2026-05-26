@@ -177,22 +177,54 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// ── 3. CARDS PARALLAX ────────────────────────────
-const cardDefs = [
-  { sel: '.card-1', rot: -4, depth: 0.8 },
-  { sel: '.card-2', rot:  3, depth: 1.2 },
-  { sel: '.card-3', rot:  5, depth: 0.6 },
-  { sel: '.card-4', rot: -3, depth: 1.0 },
-];
-document.addEventListener('mousemove', e => {
-  const dx = e.clientX / window.innerWidth  - 0.5;
-  const dy = e.clientY / window.innerHeight - 0.5;
-  cardDefs.forEach(({ sel, rot, depth }) => {
-    const el = document.querySelector(sel);
-    if (!el) return;
-    el.style.transform = `rotate(${rot}deg) translate(${dx*depth*24}px,${dy*depth*16}px)`;
+// ── 3. 3D CUBE ROTATION ──────────────────────────
+(function initCube() {
+  const cube    = document.getElementById('role-cube');
+  const prevBtn = document.getElementById('cube-prev');
+  const nextBtn = document.getElementById('cube-next');
+  const dots    = document.querySelectorAll('.cube-dot');
+  if (!cube) return;
+
+  const FACES = 4;
+  let current = 0;
+  let isDragging = false;
+  let dragStartX = 0;
+
+  function rotateTo(idx) {
+    current = ((idx % FACES) + FACES) % FACES;
+    cube.style.transform = `rotateY(${-current * 90}deg)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  // 버튼
+  prevBtn?.addEventListener('click', () => rotateTo(current - 1));
+  nextBtn?.addEventListener('click', () => rotateTo(current + 1));
+
+  // 점 클릭
+  dots.forEach(d => d.addEventListener('click', () => rotateTo(+d.dataset.index)));
+
+  // 드래그 (마우스)
+  cube.addEventListener('mousedown', e => { isDragging = true; dragStartX = e.clientX; });
+  window.addEventListener('mouseup',  e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const dx = e.clientX - dragStartX;
+    if (Math.abs(dx) > 60) rotateTo(dx < 0 ? current + 1 : current - 1);
   });
-});
+
+  // 스와이프 (터치)
+  cube.addEventListener('touchstart', e => { dragStartX = e.touches[0].clientX; }, { passive: true });
+  cube.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - dragStartX;
+    if (Math.abs(dx) > 50) rotateTo(dx < 0 ? current + 1 : current - 1);
+  });
+
+  // 키보드
+  window.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') rotateTo(current + 1);
+    if (e.key === 'ArrowLeft')  rotateTo(current - 1);
+  });
+})();
 
 // ── 4. SCROLL REVEAL ─────────────────────────────
 const revealEls = document.querySelectorAll(
