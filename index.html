@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PEAL© — Presence Shell</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Three.js -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────── -->
+  <nav class="nav">
+    <span class="nav-left">PEAL©</span>
+    <ul class="nav-links">
+      <li><a href="#concept">Concept</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <span class="nav-right">V.1</span>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-label top-label">
+      <span>PORTFOLIO OBJECT</span>
+      <span>PEAL © 2026</span>
+    </div>
+
+    <!-- 배경 큰 텍스트 -->
+    <div class="hero-bg-text" aria-hidden="true">PEAL</div>
+
+    <!-- Three.js Canvas -->
+    <canvas id="peal-canvas"></canvas>
+
+    <!-- 중앙 텍스트 오버레이 -->
+    <div class="hero-center-text">
+      <p class="hero-sub">Presence Shell · NFC Portfolio Object</p>
+    </div>
+
+    <!-- 드래그 힌트 -->
+    <div class="drag-hint">
+      <span class="drag-circle"></span>
+      <span>DRAG TO ROTATE</span>
+    </div>
+
+    <div class="hero-tagline">
+      <span class="tagline-line">Jinhee Eo</span>
+      <span class="tagline-line italic">2025 – 2026</span>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ── CONCEPT ───────────────────────────────────── -->
+  <section class="concept" id="concept">
+    <div class="concept-header">
+      <span class="section-tag">01 — CONCEPT</span>
+      <h2 class="concept-title">
+        Multiple Identities.<br/>
+        <em>Role on one device.</em>
+      </h2>
+    </div>
+    <div class="concept-body">
+      <p>
+        PEAL은 하나의 디바이스 안에 여러 개의 나를 담는 방식이 아니라,<br/>
+        상황과 관계에 따라 자신을 다르게 표현하는 플랫폼입니다.<br/>
+        NFC 기술로 순간을 연결하고, 고정된 정보를 넘어 역할로 소통합니다.
+      </p>
+      <div class="concept-tags">
+        <span># NFC Object</span>
+        <span># Portable Presence</span>
+        <span># Fluid Identity</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PORTFOLIO CARDS ───────────────────────────── -->
+  <section class="portfolio" id="portfolio">
+    <div class="portfolio-header">
+      <span class="section-tag">02 — PORTFOLIO</span>
+      <h2>Select Your Role</h2>
+    </div>
+
+    <div class="cards-scene" id="cards-scene">
+
+      <!-- Card 1: Graphic Designer -->
+      <div class="card card-1" data-role="graphic-designer">
+        <div class="card-inner">
+          <div class="card-img-wrap">
+            <img src="public/images/role-graphic.jpg" alt="Graphic Designer"
+                 onerror="this.style.display='none'" />
+            <div class="card-img-placeholder gd-bg"></div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">GRAPHIC DESIGNER</span>
+            <p>Visual Identity · Brand System · Typography</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Brand Experience -->
+      <div class="card card-2" data-role="brand-experience">
+        <div class="card-inner">
+          <div class="card-img-wrap">
+            <img src="public/images/role-brand.jpg" alt="Brand Experience"
+                 onerror="this.style.display='none'" />
+            <div class="card-img-placeholder be-bg"></div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">BRAND EXPERIENCE</span>
+            <p>Packaging · Product Storytelling · Campaign</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Character Design -->
+      <div class="card card-3" data-role="character-design">
+        <div class="card-inner">
+          <div class="card-img-wrap">
+            <img src="public/images/role-character.jpg" alt="Character Design"
+                 onerror="this.style.display='none'" />
+            <div class="card-img-placeholder cd-bg"></div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">CHARACTER DESIGN</span>
+            <p>IP · Illustration · World-building</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Art Direction -->
+      <div class="card card-4" data-role="art-direction">
+        <div class="card-inner">
+          <div class="card-img-wrap">
+            <img src="public/images/role-art.jpg" alt="Art Direction"
+                 onerror="this.style.display='none'" />
+            <div class="card-img-placeholder ad-bg"></div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">ART DIRECTION</span>
+            <p>Photography · Editorial · Visual Language</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Focus Card -->
+      <div class="card card-focus">
+        <div class="card-inner focus-inner">
+          <div class="focus-logo">【peal】©</div>
+          <div class="focus-name">Jinhee Eo</div>
+          <div class="focus-title">Brand Experience Designer</div>
+          <div class="focus-year">2025 – 2026, Daegu Korea</div>
+          <a href="#connect" class="focus-btn">TOUCH TO CONNECT</a>
+        </div>
+      </div>
+
+    </div><!-- /cards-scene -->
+  </section>
+
+  <!-- ── DEVICE STORY ──────────────────────────────── -->
+  <section class="device-story" id="device-story">
+    <div class="story-text">
+      <span class="section-tag">03 — THE DEVICE</span>
+      <h2>A new language<br/><em>for how you appear.</em></h2>
+      <p>
+        PEAL is not a device that defines you — it's a way to shape<br/>
+        how you reveal yourself. It proposes a new language for how<br/>
+        you express and connect.
+      </p>
+    </div>
+    <div class="story-visual">
+      <img src="public/images/front.png" alt="PEAL device" class="device-img" />
+    </div>
+  </section>
+
+  <!-- ── CONNECT ───────────────────────────────────── -->
+  <section class="connect-section" id="connect">
+    <div class="connect-inner">
+      <span class="section-tag">04 — CONNECT</span>
+      <h2 class="connect-title">
+        Touch to<br/><em>Connect</em>
+      </h2>
+      <p class="connect-sub">Jinhee Eo · Brand Experience Designer</p>
+      <p class="connect-email">go4th111@gmail.com</p>
+      <div class="connect-links">
+        <a href="#" class="link-btn">Instagram</a>
+        <a href="#" class="link-btn">Behance</a>
+        <a href="#" class="link-btn">LinkedIn</a>
+      </div>
+    </div>
+    <div class="connect-peal-icon">【peal】©</div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────── -->
+  <footer class="footer">
+    <span>PEAL © 2026</span>
+    <span>Portfolio Object · V.1</span>
+    <span>Daegu, Korea</span>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
