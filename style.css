@@ -133,18 +133,21 @@ body {
 }
 
 
-/* 중앙 3D 오브제 뒤 배경 로고 — opacity 3% */
+/* 히어로 배경 이미지 — 네비 아래 ~ 파랑 바 위 꽉 채움 */
 .hero-brand-logo {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: clamp(120px, 22vw, 280px);
-  width: auto;
+  top: 42px;           /* 네비 높이 */
+  left: 0;
+  right: 0;
+  bottom: 36px;        /* 파랑 바 높이 */
+  width: 100%;
+  height: calc(100% - 42px - 36px);
+  object-fit: cover;
+  object-position: center center;
   pointer-events: none;
   z-index: 0;          /* 캔버스(z-index:1) 뒤 */
   user-select: none;
-  opacity: 0.03;
+  display: block;
 }
 
 /* 우측 제품 정보 */
