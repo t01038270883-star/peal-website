@@ -567,17 +567,6 @@ body {
   color: rgba(255,255,255,0.35);
 }
 
-/* 상/하 캡 (박스 두께 표현) */
-.roll-cap {
-  position: absolute;
-  background: #0d0d10;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  width: 100%; height: 100%;
-  top: 0; left: 0;
-}
-.cap-top    { transform: rotateX( 90deg) translateZ(calc(var(--cr) * -1)); }
-.cap-bottom { transform: rotateX(-90deg) translateZ(var(--cr)); }
 
 /* 페이지 인디케이터 */
 .cube-dots {
