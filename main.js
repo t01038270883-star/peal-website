@@ -60,7 +60,7 @@ keyLight.position.set(2, 6, 4);
 scene.add(keyLight);
 
 // 사이드 림 라이트 (파란빛 반사)
-const rimLight = new THREE.DirectionalLight(0x6699CC, 1.8);
+const rimLight = new THREE.DirectionalLight(0x4477DD, 2.4);
 rimLight.position.set(-5, 2, -2);
 scene.add(rimLight);
 
@@ -75,10 +75,10 @@ scene.add(new THREE.AmbientLight(0xCCDDFF, 0.4));
 // ── 메탈릭 재질 – 실버 크롬 (쿨 블루-그레이) ─────
 // 레퍼: 밝은 크롬/스테인리스 + 쿨 블루 반사
 const metalMat = new THREE.MeshStandardMaterial({
-  color:           new THREE.Color(0xA8B8CC), // 밝은 쿨 실버
+  color:           new THREE.Color(0x7A9BC8), // 쿨 블루-실버
   metalness:       1.0,
   roughness:       0.08,
-  envMapIntensity: 2.2,
+  envMapIntensity: 2.4,
 });
 
 // ── 로딩 UI ──────────────────────────────────────
