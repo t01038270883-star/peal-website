@@ -51,45 +51,56 @@ body {
   border: 1px solid var(--black);
 }
 
-/* ── NAV ──────────────────────────────────────── */
+/* ── NAV (Kartell 스타일) ────────────────────── */
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 24px 48px;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  height: 56px;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1.5px solid rgba(0,0,0,0.18);
 }
 .nav-logo {
-  height: 22px;
+  height: 20px;
   width: auto;
   display: block;
-  opacity: 0.9;
 }
 .nav-links {
-  display: flex; gap: 36px;
+  display: flex; gap: 0;
   list-style: none;
+  height: 100%;
+  align-items: center;
+}
+.nav-links li {
+  height: 100%;
+  display: flex; align-items: center;
+}
+.nav-links li + li {
+  border-left: 1px solid rgba(0,0,0,0.1);
 }
 .nav-links a {
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.12em;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--mid);
-  transition: color 0.25s;
+  color: var(--black);
+  padding: 0 22px;
+  transition: color 0.2s;
 }
-.nav-links a:hover { color: var(--black); }
+.nav-links a:hover { color: #2785EA; }
 .nav-right {
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  color: var(--light);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: rgba(0,0,0,0.3);
+  text-transform: uppercase;
 }
 
-/* ── HERO ─────────────────────────────────────── */
+/* ── HERO (Kartell 스타일) ────────────────────── */
 .hero {
   position: relative;
   width: 100%; height: 100vh;
@@ -98,23 +109,7 @@ body {
   background: var(--bg);
 }
 
-/* 배경 대형 텍스트 */
-.hero-bg-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: clamp(180px, 32vw, 400px);
-  font-weight: 600;
-  letter-spacing: -0.06em;
-  color: var(--black);
-  opacity: 0.025;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 0;
-  user-select: none;
-}
-
+/* Three.js 캔버스 */
 #peal-canvas {
   position: absolute;
   inset: 0;
@@ -123,46 +118,71 @@ body {
   z-index: 1;
 }
 
-/* 히어로 레이블 */
+/* 상단 레이블 — nav 바로 아래 얇은 선 구분 */
 .hero-label.top-label {
   position: absolute;
-  top: 88px; left: 0; right: 0;
+  top: 56px; left: 0; right: 0;
   display: flex; justify-content: space-between;
-  padding: 0 48px;
-  z-index: 2;
+  align-items: center;
+  padding: 10px 48px;
+  z-index: 3;
   pointer-events: none;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 .hero-label span {
-  font-size: 10px;
-  font-weight: 400;
+  font-size: 9.5px;
+  font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--mid);
+  color: rgba(0,0,0,0.4);
 }
 
-/* 히어로 중앙 하단 */
-.hero-center-text {
+/* 하단 대형 브랜드 텍스트 (Kartell 스타일 — bottom-left) */
+.hero-brand-text {
   position: absolute;
-  bottom: 52px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  text-align: center;
-  pointer-events: none;
-}
-.hero-sub {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--mid);
+  bottom: 36px;           /* 블루 바 높이만큼 */
+  left: -6px;
+  font-size: clamp(96px, 20vw, 260px);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  color: var(--black);
+  opacity: 1;
   white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+  line-height: 0.88;
+}
+
+/* 우측 제품 정보 */
+.hero-product-info {
+  position: absolute;
+  right: 48px;
+  bottom: 90px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  pointer-events: none;
+  text-align: right;
+}
+.product-name {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--black);
+}
+.product-sub {
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--mid);
 }
 
 /* 드래그 힌트 */
 .drag-hint {
   position: absolute;
-  bottom: 100px;
+  bottom: 108px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -171,68 +191,43 @@ body {
   transition: opacity 0.6s ease;
 }
 .drag-circle {
-  width: 44px; height: 44px;
-  border: 1px solid rgba(0,0,0,0.2);
+  width: 40px; height: 40px;
+  border: 1px solid rgba(0,0,0,0.18);
   border-radius: 50%;
   animation: pulse-ring 2.5s ease-in-out infinite;
 }
 .drag-hint span:last-child {
-  font-size: 10px;
-  font-weight: 400;
+  font-size: 9px;
+  font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--mid);
+  color: rgba(0,0,0,0.35);
 }
 @keyframes pulse-ring {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50%       { transform: scale(1.14); opacity: 1; }
+  0%, 100% { transform: scale(1);    opacity: 0.5; }
+  50%       { transform: scale(1.14); opacity: 1;   }
 }
 
-/* 히어로 타글라인 */
-.hero-tagline {
+/* 하단 블루 바 */
+.hero-bottom-bar {
   position: absolute;
-  bottom: 40px;
-  left: 48px;
-  z-index: 2;
-  pointer-events: none;
-  line-height: 1.2;
-}
-.tagline-line {
-  display: block;
-  font-size: clamp(12px, 1.4vw, 18px);
-  font-weight: 300;
-  color: var(--mid);
-  letter-spacing: 0.01em;
-}
-.tagline-line.italic {
-  color: var(--light);
-}
-
-/* 스크롤 인디케이터 */
-.scroll-indicator {
-  position: absolute;
-  bottom: 40px; right: 48px;
-  z-index: 2;
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  bottom: 0; left: 0; right: 0;
+  height: 36px;
+  background: #2785EA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  z-index: 4;
   pointer-events: none;
 }
-.scroll-line {
-  width: 1px; height: 44px;
-  background: linear-gradient(to bottom, transparent, var(--mid));
-  animation: scroll-drop 1.8s ease-in-out infinite;
-}
-.scroll-indicator span {
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.2em;
+.hero-bottom-bar span {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--mid);
-}
-@keyframes scroll-drop {
-  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
-  40%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
-  60%  { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+  color: rgba(255,255,255,0.92);
+  white-space: nowrap;
 }
 
 /* ── STL LOADING BAR ─────────────────────────── */
@@ -613,14 +608,16 @@ body {
 
 /* ── RESPONSIVE ───────────────────────────────── */
 @media (max-width: 768px) {
-  .nav { padding: 18px 20px; }
+  .nav { padding: 0 20px; height: 50px; }
   .nav-links { display: none; }
+  .hero-label.top-label { padding: 10px 20px; }
+  .hero-product-info { right: 20px; bottom: 70px; }
+  .hero-brand-text { font-size: clamp(72px, 22vw, 140px); }
+  .hero-bottom-bar { padding: 0 20px; }
+  .hero-bottom-bar span:nth-child(2) { display: none; }
   .concept, .device-story { grid-template-columns: 1fr; padding: 72px 20px; gap: 40px; }
   .connect-section { flex-direction: column; padding: 80px 20px; }
   .connect-peal-icon { display: none; }
-  .cards-scene { height: 580px; }
-  .card-focus { width: 240px; height: 310px; }
-  .hero-label.top-label, .hero-tagline { padding: 0 20px; }
-  .scroll-indicator { right: 20px; }
+  .cube-stage { padding: 0 16px; }
   .footer { padding: 18px 20px; flex-direction: column; gap: 6px; text-align: center; }
 }
