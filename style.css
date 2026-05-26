@@ -477,6 +477,96 @@ body {
   line-height: 1.65;
 }
 
+/* ── FFIXXED-STYLE FACE LAYOUT ─────────────────── */
+.ffix-layout {
+  flex-direction: row;
+  padding: 18px 20px;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.ffix-sidebar {
+  flex: 0 0 auto;
+  width: clamp(80px, 13%, 110px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 2px;
+}
+
+.ffix-brand {
+  font-size: clamp(10px, 1.5vw, 15px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.ffix-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ffix-nav li {
+  font-size: 7.5px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.6;
+}
+
+.ffix-listings {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding-top: 2px;
+}
+
+.ffix-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ffix-city {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 1px;
+}
+
+.ffix-venue {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.68);
+}
+
+.ffix-date {
+  display: block;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.5);
+}
+
+.ffix-contact {
+  display: block;
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.35);
+}
+
 /* 상/하 캡 (박스 두께 표현) */
 .roll-cap {
   position: absolute;
