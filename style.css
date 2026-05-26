@@ -392,42 +392,75 @@ body {
   );
 }
 
-/* 텍스트 콘텐츠 */
+/* ── 페이스 콘텐츠 — ffixxed 스타일 2컬럼 ── */
 .face-content {
   position: absolute;
   inset: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: row;
+  align-items: flex-end;
   padding: 28px 36px;
-  gap: 10px;
+  gap: 36px;
 }
 
-/* 직함 */
+/* 왼쪽 — 역할명 (중간 크기) */
+.face-col-left {
+  flex: 0 0 auto;
+  width: clamp(110px, 28%, 180px);
+  display: flex;
+  align-items: flex-end;
+}
 .face-role {
-  font-size: clamp(36px, 5.5vw, 64px);
+  font-size: clamp(16px, 2.4vw, 28px);
   font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 0.92;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
   color: #FFFFFF;
   text-transform: uppercase;
 }
 
-/* 서브 정보 */
-.face-info {
+/* 오른쪽 — 상세 정보 */
+.face-col-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.face-skills {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.face-skills li {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.5;
+}
+.face-desc {
+  font-size: 10.5px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.75;
+}
+.face-info-line {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 8px;
 }
-.face-info span {
-  font-size: 11px;
+.face-info-line span {
+  font-size: 9.5px;
   font-weight: 400;
-  letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.65);
-}
-.face-info span:first-child {
-  color: rgba(255,255,255,0.9);
-  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
 }
 
 /* 상/하 캡 (박스 두께 표현) */
@@ -441,8 +474,6 @@ body {
 }
 .cap-top    { transform: rotateX( 90deg) translateZ(calc(var(--cr) * -1)); }
 .cap-bottom { transform: rotateX(-90deg) translateZ(var(--cr)); }
-.cap-left   { transform: rotateY(-90deg) translateZ(0) translateX(calc(var(--cr) * -1)); width: var(--ch); }
-.cap-right  { transform: rotateY( 90deg) translateZ(0) translateX(calc(var(--cw) - var(--cr))); width: var(--ch); }
 
 /* 페이지 인디케이터 */
 .cube-dots {
